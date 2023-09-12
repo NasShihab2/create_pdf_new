@@ -40,28 +40,24 @@ class _MyHomePageState extends State<MyHomePage> {
         font: PdfStandardFont(PdfFontFamily.helvetica, 30),
         cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
 
-    grid.columns.add(count: 3);
+    grid.columns.add(count: 2);
     grid.headers.add(1);
 
     PdfGridRow header = grid.headers[0];
     header.cells[0].value = 'Roll No';
     header.cells[1].value = 'Name';
-    header.cells[2].value = 'Class';
 
     PdfGridRow row = grid.rows.add();
     row.cells[0].value = '1';
     row.cells[1].value = 'Arya';
-    row.cells[2].value = '6';
 
     row = grid.rows.add();
     row.cells[0].value = '2';
     row.cells[1].value = 'John';
-    row.cells[2].value = '9';
 
     row = grid.rows.add();
     row.cells[0].value = '3';
     row.cells[1].value = 'Tony';
-    row.cells[2].value = '8';
 
     grid.draw(
         page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
@@ -69,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     List<int> bytes = await document.save(); // Use 'await' to get the result.
     document.dispose();
 
-    saveAndLaunchFile(bytes, 'Output.pdf');
+    saveAndLaunchFile(bytes, 'Application.pdf');
   }
 }
 
