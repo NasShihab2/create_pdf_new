@@ -28,16 +28,22 @@ class _MyHomePageState extends State<MyHomePage> {
     PdfDocument document = PdfDocument();
     final page = document.pages.add();
 
-    page.graphics.drawString('Welcome to PDF Succinctly!',
-        PdfStandardFont(PdfFontFamily.helvetica, 30));
+    // Load the custom Bengali font
+    final bengaliFont = await rootBundle.load("images/Li_Alinur_Tatsama_ANSI_V1.ttf");
+
+    page.graphics.drawString('Welcome to PDF Succinctly!', PdfStandardFont(PdfFontFamily.helvetica, 30));
+
+    // Convert ByteData to Uint8List
+    final imageData = await _readImageData('images/Pdf_Succinctly.jpg');
+    final Uint8List uint8ImageData = Uint8List.sublistView(imageData);
 
     page.graphics.drawImage(
-        PdfBitmap(await _readImageData('Pdf_Succinctly.jpg')),
+        PdfBitmap(uint8ImageData), // Use the converted Uint8List
         const Rect.fromLTWH(0, 100, 440, 550));
 
     PdfGrid grid = PdfGrid();
     grid.style = PdfGridStyle(
-        font: PdfStandardFont(PdfFontFamily.helvetica, 30),
+        font: PdfTrueTypeFont(bengaliFont.buffer.asUint8List(), 30), // Use the loaded Bengali font.
         cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
 
     grid.columns.add(count: 2);
@@ -49,27 +55,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
     PdfGridRow row = grid.rows.add();
     row.cells[0].value = '1';
-    row.cells[1].value = 'Arya';
+    row.cells[1].value = 'আর্য';
 
     row = grid.rows.add();
     row.cells[0].value = '2';
-    row.cells[1].value = 'John';
+    row.cells[1].value = 'জন';
 
     row = grid.rows.add();
     row.cells[0].value = '3';
-    row.cells[1].value = 'Tony';
+    row.cells[1].value = 'টনি';
 
-    grid.draw(
-        page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
+    grid.draw(page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
 
     List<int> bytes = await document.save(); // Use 'await' to get the result.
     document.dispose();
 
+    // Save and launch the PDF file
     saveAndLaunchFile(bytes, 'Application.pdf');
   }
-}
 
-Future<Uint8List> _readImageData(String name) async {
-  final data = await rootBundle.load('images/$name');
-  return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  Future<ByteData> _readImageData(String imagePath) async {
+    final ByteData data = await rootBundle.load(imagePath);
+    return data;
+  }
+
+  // Implement a function to save and launch the PDF here
+  void saveAndLaunchFile(List<int> bytes, String fileName) {
+    // Implement this function to save and launch the PDF file
+    // For example, you can use the `path_provider` package to save the file,
+    // and the `open_file` package to launch it.
+  }
 }
