@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final page = document.pages.add();
 
     // Load the custom Bengali font
-    final bengaliFont = await rootBundle.load("images/Li_Alinur_Tatsama_ANSI_V1.ttf");
+    final bengaliFont = await rootBundle.load("images/kalpurush_ANSI.ttf");
 
     page.graphics.drawString('Welcome to PDF Succinctly!', PdfStandardFont(PdfFontFamily.helvetica, 30));
 
@@ -71,18 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
     document.dispose();
 
     // Save and launch the PDF file
-    saveAndLaunchFile(bytes, 'Application.pdf');
+    saveAndLaunchFile(bytes, 'Application2.pdf');
   }
+}
 
-  Future<ByteData> _readImageData(String imagePath) async {
-    final ByteData data = await rootBundle.load(imagePath);
-    return data;
-  }
-
-  // Implement a function to save and launch the PDF here
-  void saveAndLaunchFile(List<int> bytes, String fileName) {
-    // Implement this function to save and launch the PDF file
-    // For example, you can use the `path_provider` package to save the file,
-    // and the `open_file` package to launch it.
-  }
+Future<ByteData> _readImageData(String imagePath) async {
+  final ByteData data = await rootBundle.load(imagePath);
+  return data;
 }
