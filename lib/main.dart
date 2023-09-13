@@ -1,4 +1,3 @@
-import 'package:create_pdf_new/homepage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,10 +9,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Container(),
     );
   }
 }
-
