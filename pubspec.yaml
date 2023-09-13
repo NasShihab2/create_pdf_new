@@ -33,6 +33,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   mac_address: ^1.0.0
+  device_info_plus: ^2.1.0
 
 dev_dependencies:
   flutter_test:
