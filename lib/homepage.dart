@@ -29,7 +29,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final page = document.pages.add();
 
     // Load the custom Bengali font
-    final bengaliFont = await rootBundle.load("images/kalpurush_ANSI.ttf");
+    final bengaliFont = await rootBundle.load("images/TiroBangla-Regular.ttf");
+
 
     page.graphics.drawString('Welcome to PDF Succinctly!', PdfStandardFont(PdfFontFamily.helvetica, 30));
 
