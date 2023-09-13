@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'awesome.dart';
 
 class BodyWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class BodyWidget extends StatelessWidget {
           ),
         ),
         const Divider(
-          thickness: 2,
+          thickness: 3,
         ),
         AwesomeDialogSuccess().customTextAwesomeDialog(context, title: 'জাতিয় পরিচয়পত্র', text: nidNumber),
         AwesomeDialogSuccess().customTextAwesomeDialog(context, title: 'মোবাইল', text: 'mobileNum'),
