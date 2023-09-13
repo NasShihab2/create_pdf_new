@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
-import 'package:create_pdf_new/dialog/body.dart';
+import 'package:create_pdf_new/body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:open_file/open_file.dart';

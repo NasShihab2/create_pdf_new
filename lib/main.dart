@@ -1,7 +1,7 @@
-import 'package:create_pdf_new/homepage.dart';
+
 import 'package:flutter/material.dart';
 
-import 'dialog/dialog_pdf.dart';
+import 'dialog_pdf.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: MyHomePage(),
       home: DialogToPdfPage(),
