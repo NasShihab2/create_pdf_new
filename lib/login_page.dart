@@ -58,15 +58,7 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<void> tokenSet() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    // Print the stored token
-    String storedToken = prefs.getString('token') ?? "No token found";
-    debugPrint('Stored token: $storedToken');
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(token: storedToken)));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +94,9 @@ class LoginPageState extends State<LoginPage> {
               child: const Text('Login'),
             ),
             ElevatedButton(
-              onPressed: tokenSet,
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondPage()));
+              },
               child: const Text('2nd Page'),
             ),
           ],
