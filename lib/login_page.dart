@@ -1,3 +1,4 @@
+import 'package:create_pdf_new/second_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -57,6 +58,16 @@ class LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<void> tokenSet() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Print the stored token
+    String storedToken = prefs.getString('token') ?? "No token found";
+    debugPrint('Stored token: $storedToken');
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(token: storedToken)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +100,10 @@ class LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: _login,
               child: const Text('Login'),
+            ),
+            ElevatedButton(
+              onPressed: tokenSet,
+              child: const Text('2nd Page'),
             ),
           ],
         ),
